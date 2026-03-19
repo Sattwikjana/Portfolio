@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+
+:root {
+  --font: 'Montserrat', sans-serif;
+  --bg-color-1: #0a0a1a;
+  --bg-color-2: #1a0f2e;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --text-main: #ffffff;
+  --accent: #ff6b6b;
+  --accent-2: #4ecdc4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Drei ScrollControls handles scrolling */
+  font-family: var(--font);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Panel styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+  padding: 2.5rem;
+  color: #fff;
+}
+
+/* Typography base */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, var(--accent), #feca57);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--accent-2);
+}
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+/* Overlay specific positioning */
+.scroll-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  pointer-events: none; /* Let clicks pass to 3D if needed */
+}
+
+.scroll-section > div {
+  pointer-events: auto; /* Enable clicks on the panel itself */
+  max-width: 650px;
+}
+
+.section-right {
+  align-items: flex-end;
+}
+
+.section-right > div {
+  text-align: right;
+}
+
+/* Cards for projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.project-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  text-align: left;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+.project-card h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.skill-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.contact-btn {
+  display: inline-flex;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, var(--accent), #ff8a5b);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.contact-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
