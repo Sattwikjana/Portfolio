@@ -1,12 +1,12 @@
 # Sattwik Jana — 3D Portfolio
 
-[![Live on Vercel](https://img.shields.io/badge/Live-portfolio--tau--rouge--79.vercel.app-000000?style=flat&logo=vercel&logoColor=white)](https://portfolio-tau-rouge-79.vercel.app)
+[![Live on Vercel](https://img.shields.io/badge/Live-sattwikjana.vercel.app-000000?style=flat&logo=vercel&logoColor=white)](https://sattwikjana.vercel.app)
 
 An immersive 3D animated portfolio: a glowing particle planet with animated trade routes floats behind every section, choreographed by your scroll — a nod to the cross-border commerce products I build.
 
 ## Live Demo
 
-**🌐 [portfolio-tau-rouge-79.vercel.app](https://portfolio-tau-rouge-79.vercel.app)** — deployed on Vercel, auto-deploys on every push to `main`.
+**🌐 [sattwikjana.vercel.app](https://sattwikjana.vercel.app)** — deployed on Vercel, auto-deploys on every push to `main`.
 
 > Or run locally with `npm run dev` — opens at `http://localhost:5173`
 
