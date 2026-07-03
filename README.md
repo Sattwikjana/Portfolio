@@ -1,36 +1,30 @@
 # Sattwik Jana — 3D Portfolio
 
-An interactive 3D portfolio built with React Three Fiber, featuring a scroll-driven cinematic experience through a starfield universe.
+An immersive 3D animated portfolio: a glowing particle planet with animated trade routes floats behind every section, choreographed by your scroll — a nod to the cross-border commerce products I build.
 
 ## Live Demo
 
 > Run locally with `npm run dev` — opens at `http://localhost:5173`
 
-## Screenshots
-
-### Home — Hero Section
-![Home Section](screenshots/screenshot-home.png)
-
 ## About the Project
 
-This portfolio is a fully immersive 3D web experience built using React and Three.js. As you scroll, the camera flies through a deep-space environment, passing by floating 3D objects that represent different sections of the portfolio — Home, Education, Projects, and Contact.
+The whole site sits on top of a persistent WebGL scene — a "commerce planet" made of ~4,200 particles, wrapped in a fresnel atmosphere, orbit rings with floating tech satellites, and bezier trade arcs carrying glowing packets between points on the globe. As you scroll, keyframed choreography moves the planet from side to side, retints its particles, and speeds up its spin with your scroll velocity, while the camera drifts with your mouse.
 
-Each section is rendered as an HTML overlay on top of the 3D canvas using `@react-three/drei`'s `<Scroll html>` component, giving it a glassmorphism UI feel layered over the 3D world.
+The content layer is a fully animated single page built from my CV and GitHub profile — hero with per-letter reveal and role typewriter, 3D-tilt glass cards with cursor-tracked glare, magnetic buttons, count-up stats, a scroll-linked timeline, and a mock-browser showcase for Global Shopper.
 
 ### Key Features
 
-- Scroll-driven 3D camera animation through a starfield
-- Glassmorphism UI panels with Framer Motion entrance animations
-- Floating 3D geometry nodes (sphere, cube, torus, octahedron) as section markers
-- 300-particle path system guiding the viewer through the scene
-- Fully responsive layout
+- **Particle planet** — fibonacci-sphere point cloud with violet→cyan pole-to-equator coloring
+- **Trade arcs** — cubic-bezier routes across the globe with traveling glowing packets
+- **Scroll choreography** — keyframed planet position / scale / tint per section, frame-rate-independent damping
+- **Post-processing** — bloom + vignette via `@react-three/postprocessing`
+- **Butter scroll** — Lenis smooth scrolling wired into the 3D scene (velocity drives spin)
+- **UI/UX details** — preloader with wipe exit, custom cursor (dot + trailing ring), magnetic buttons, 3D tilt cards with glare, marquee, count-up counters, staggered word/letter reveals
+- **Performance** — Three.js chunk is code-split and lazy-loaded behind the preloader (main bundle ~123 KB gzip); reduced particle counts on mobile; respects `prefers-reduced-motion`
 
 ### Sections
 
-- **Home** — Introduction, skills, and a brief bio
-- **Education & Journey** — IMT Hyderabad (PGDM) and MNNIT Allahabad (B.Tech CSE), plus leadership roles
-- **Featured Projects** — Brain Tumor Classification CNN (95.8% accuracy) and 2011 Census Analysis with SQL + Power BI
-- **Contact** — Email, phone, and GitHub links
+Hero · Tech marquee · About (photo + stats + education) · Skills arsenal · Experience @ Befach 4X · Flagship (Global Shopper) · Ventures launched · AI/ML/Data projects · Leadership & achievements · Contact
 
 ## Tech Stack
 
@@ -38,8 +32,10 @@ Each section is rendered as an HTML overlay on top of the 3D canvas using `@reac
 |---|---|
 | React 19 | UI framework |
 | Three.js + React Three Fiber | 3D rendering |
-| @react-three/drei | 3D helpers (Stars, Float, ScrollControls, Text) |
-| Framer Motion | HTML overlay animations |
+| @react-three/drei | 3D helpers (Stars, Line) |
+| @react-three/postprocessing | Bloom & vignette |
+| Framer Motion | Scroll reveals, stagger, tilt springs |
+| Lenis | Smooth scrolling |
 | Lucide React | Icons |
 | Vite | Build tool |
 
@@ -60,12 +56,29 @@ npm run build
 
 ```
 src/
+├── scene/
+│   └── Scene.jsx        # WebGL world — particle planet, arcs, rings, bloom, scroll rig
 ├── components/
-│   ├── Experience.jsx   # 3D scene — camera rig, geometry nodes, particles
-│   └── Overlay.jsx      # HTML sections rendered over the canvas
-├── App.jsx              # Canvas setup with ScrollControls
-├── index.css            # Global styles and glassmorphism theme
-└── main.jsx             # Entry point
+│   ├── ui.jsx           # Reveal, TiltCard, Magnetic, Counter, SectionHeading
+│   ├── Preloader.jsx    # Count-up loader with wipe exit
+│   ├── Cursor.jsx       # Custom cursor (dot + trailing ring)
+│   ├── Navbar.jsx       # Glass nav, scroll progress, mobile menu
+│   ├── Hero.jsx         # Letter-reveal name, role typewriter
+│   ├── Marquee.jsx      # Infinite tech ticker
+│   ├── About.jsx        # Photo card, stats, education, interests
+│   ├── Skills.jsx       # Skill group cards
+│   ├── Experience.jsx   # Timeline @ Befach 4X
+│   ├── Flagship.jsx     # Global Shopper showcase (mock browser + features)
+│   ├── Ventures.jsx     # Befach B2B, 91GI, D'Cal, Befach Foods
+│   ├── Projects.jsx     # CNN, multi-agent AI, SQL/Power BI, bots
+│   ├── Leadership.jsx   # Positions, achievements, certifications
+│   └── Contact.jsx      # Big CTA + footer
+├── data/
+│   └── portfolio.js     # Single source of truth (CV + GitHub README content)
+├── utils/
+│   └── scrollState.js   # Shared scroll progress bridge (Lenis → Three.js)
+├── App.jsx              # Composition + Lenis setup + lazy 3D scene
+└── index.css            # Design system (Syne / Space Grotesk / JetBrains Mono)
 ```
 
 ## Author
@@ -74,3 +87,4 @@ src/
 - GitHub: [@Sattwikjana](https://github.com/Sattwikjana)
 - Email: sattwikjana77@gmail.com
 - LinkedIn: [sattwik-jana](https://www.linkedin.com/in/sattwik-jana/)
+- Live work: [globalshopper.in](https://www.globalshopper.in)
